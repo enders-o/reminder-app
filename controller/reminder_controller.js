@@ -41,7 +41,8 @@ let remindersController = {
   },
 
   update: (req, res) => {
-    // implement this code
+    let reminder = req.params.id
+    
   },
 
   delete: (req, res) => {
