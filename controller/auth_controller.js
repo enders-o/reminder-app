@@ -14,10 +14,7 @@ let authController = {
   },
 
   registerSubmit: (req, res) => {
-    let reminderToFind = req.params.id;
-    console.log(reminderToFind)
-    //database.cindy.reminders.remove(reminderToFind)
-    res.redirect("/reminders");
+    //
   },
 };
 
