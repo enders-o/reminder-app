@@ -27,6 +27,10 @@ let authController = {
   registerSubmit: (req, res) => {
     //
     return;
+  },
+  
+  logout: (req, res) => {
+    req.logout(() => res.redirect("/login"))
   }
 };
 
