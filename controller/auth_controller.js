@@ -1,7 +1,9 @@
 let database = require("../database");
+const userController = require("./userController").userModel;
 
 let authController = {
   login: (req, res) => {
+    console.log(req.body);
     res.render("auth/login");
   },
 
@@ -10,7 +12,10 @@ let authController = {
   },
 
   loginSubmit: (req, res) => {
-    // implement
+    // implement 
+
+    console.log(req);
+    res.redirect("/reminders")
   },
 
   registerSubmit: (req, res) => {
