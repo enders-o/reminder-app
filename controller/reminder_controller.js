@@ -2,10 +2,7 @@ let database = require("../database");
 
 let remindersController = {
   list: (req, res) => {
-    user = database.find((user) => {
-      return user.id == 1
-    })
-    res.render("reminder/index", { reminders: user.reminders });
+    res.render("reminder/index", { reminders: req.user.reminders });
   },
 
   new: (req, res) => {
@@ -13,8 +10,9 @@ let remindersController = {
   },
 
   listOne: (req, res) => {
+    console.log(req.user)
     let reminderToFind = req.params.id;
-    let searchResult = user.reminders.find(function (reminder) {
+    let searchResult = req.user.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
     if (searchResult != undefined) {
@@ -37,7 +35,7 @@ let remindersController = {
 
   edit: (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = user.reminders.find((reminder) => {
+    let searchResult = req.user.reminders.find((reminder) => {
       return reminder.id == reminderToFind;
     });
     res.render("reminder/edit", { reminderItem: searchResult });
@@ -62,11 +60,11 @@ let remindersController = {
     
     let reminderToFind = req.params.id;
 
-    let searchResult = user.reminders.find(function (reminder) {
+    let searchResult = req.user.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
 
-    let reminderIndex = user.reminders.indexOf(searchResult)
+    let reminderIndex = req.user.reminders.indexOf(searchResult)
 
     user.reminders.splice(reminderIndex, 1);
     res.redirect("/reminders");
