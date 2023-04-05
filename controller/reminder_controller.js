@@ -28,6 +28,7 @@ let remindersController = {
       title: req.body.title,
       description: req.body.description,
       completed: false,
+      tags: req.body.tags,
     };
     req.user.reminders.push(reminder);
     res.redirect("/reminders");
@@ -46,6 +47,7 @@ let remindersController = {
       if (reminder.id == req.params.id) {
         reminder.title = req.body.title
         reminder.description = req.body.description
+        reminder.tags = req.body.tags
         if (req.body.completed == "true") {
           reminder.completed = true
         } else {
