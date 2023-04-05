@@ -66,7 +66,7 @@ let remindersController = {
 
     let reminderIndex = req.user.reminders.indexOf(searchResult)
 
-    user.reminders.splice(reminderIndex, 1);
+    req.user.reminders.splice(reminderIndex, 1);
     res.redirect("/reminders");
   },
 };
