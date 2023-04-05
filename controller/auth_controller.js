@@ -4,8 +4,6 @@ const userController = require("./userController").userModel;
 
 let authController = {
   login: (req, res) => {
-    
-    // console.log(req.body);
     res.render("auth/login");
   },
 
@@ -14,19 +12,23 @@ let authController = {
   },
 
   loginSubmit: (req, res, next) => {
-    // implement 
     passport.authenticate("local", {
       successRedirect: "/reminders",
       failureRedirect: "/login",
     })  
     (req,res,next);
-    // console.log(req);
-    // res.redirect("/reminders")
   },
 
   registerSubmit: (req, res) => {
-    //
-    return;
+    let user = {
+      id: database.length + 1,
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      reminders: []
+    };
+    database.push(user)
+    res.redirect("/login");
   },
   
   logout: (req, res) => {
