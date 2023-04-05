@@ -10,7 +10,7 @@ let Database = [
         id: 2,
         name: "Johnny Doe",
         email: "johnny123@gmail.com",
-        password: "johnny123!",
+        password: "jo",
         reminders: [{id: 1, title: "abc123123", description: "123132132", completed: false}],
       },
 ]

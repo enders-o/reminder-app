@@ -10,7 +10,7 @@ let remindersController = {
   },
 
   listOne: (req, res) => {
-    console.log(req.user)
+    // console.log(req.user)
     let reminderToFind = req.params.id;
     let searchResult = req.user.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
@@ -66,7 +66,7 @@ let remindersController = {
 
     let reminderIndex = req.user.reminders.indexOf(searchResult)
 
-    user.reminders.splice(reminderIndex, 1);
+    req.user.reminders.splice(reminderIndex, 1);
     res.redirect("/reminders");
   },
 };
