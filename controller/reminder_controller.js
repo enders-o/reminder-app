@@ -3,7 +3,7 @@ let database = require("../database");
 let remindersController = {
   list: (req, res) => {
     user = database.find((user) => {
-      return user.id == 1
+      return user.id == req.id
     })
     res.render("reminder/index", { reminders: user.reminders });
   },
@@ -14,7 +14,7 @@ let remindersController = {
 
   listOne: (req, res) => {
     let reminderToFind = req.params.id;
-    let searchResult = user.reminders.find(function (reminder) {
+    let searchResult = req.user.reminders.find(function (reminder) {
       return reminder.id == reminderToFind;
     });
     if (searchResult != undefined) {
