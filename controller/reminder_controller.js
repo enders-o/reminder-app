@@ -2,10 +2,7 @@ let database = require("../database");
 
 let remindersController = {
   list: (req, res) => {
-    user = database.find((user) => {
-      return user.id == 1
-    })
-    res.render("reminder/index", { reminders: user.reminders });
+    res.render("reminder/index", { reminders: req.user.reminders });
   },
 
   new: (req, res) => {
@@ -74,3 +71,5 @@ let remindersController = {
 };
 
 module.exports = remindersController;
+
+
