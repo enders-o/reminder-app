@@ -18,18 +18,18 @@ let remindersController = {
     if (searchResult != undefined) {
       res.render("reminder/single-reminder", { reminderItem: searchResult });
     } else {
-      res.render("reminder/index", { reminders: user.reminders });
+      res.render("reminder/index", { reminders: req.user.reminders });
     }
   },
 
   create: (req, res) => {
     let reminder = {
-      id: user.reminders.length + 1,
+      id: req.user.reminders.length + 1,
       title: req.body.title,
       description: req.body.description,
       completed: false,
     };
-    user.reminders.push(reminder);
+    req.user.reminders.push(reminder);
     res.redirect("/reminders");
   },
 
@@ -42,7 +42,7 @@ let remindersController = {
   },
 
   update: (req, res) => {
-    for (const reminder of user.reminders) {
+    for (const reminder of req.user.reminders) {
       if (reminder.id == req.params.id) {
         reminder.title = req.body.title
         reminder.description = req.body.description
