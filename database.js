@@ -3,7 +3,7 @@ let Database = [
         id : 1,
         name: "jimmy",
         email: "jimmy123@gmail.com",
-        password: "jimmy123!",
+        password: "ji",
         reminders: [{id: 1, title: "jimmy", description: "abcabc", completed: false, tags: "bcit", id: 2, title: "mmy234", description: "fdhgbc", completed: false, tags: "edit"}],
         friends: []
     },
@@ -19,7 +19,7 @@ let Database = [
         id: 3,
         name: "cindy",
         email: "cindy@gmail.com",
-        password: "co",
+        password: "c",
         reminders: [],
         friends: []
     }

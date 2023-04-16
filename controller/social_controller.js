@@ -9,7 +9,7 @@ let socialController = {
         let userToAdd = req.params.id;
         // let friendsIndex = req.user.friends;
         if (req.user && req.user.friends) {
-            req.user.friends.push(req.params.id);
+            req.user.friends.push(Number(req.params.id));
             res.redirect("/social")
         } else {
             res.status(500).send("Error")
@@ -19,9 +19,7 @@ let socialController = {
     
     unadd: (req, res) => {
         let userToUnAdd = req.params.id;
-        let userIndex = req.user.friends.indexOf(id => {
-            return id == userToUnAdd;
-        });
+        let userIndex = req.user.friends.indexOf(Number(userToUnAdd));
         req.user.friends.splice(userIndex, 1);
         res.redirect("/social")
     }
