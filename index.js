@@ -3,6 +3,7 @@ const path = require("path");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 const reminderController = require("./controller/reminder_controller");
+const socialController = require("./controller/social_controller")
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -14,6 +15,7 @@ app.use(expressLayouts);
 const authController = require("./controller/auth_controller");
 const { ensureAuthenticated, forwardAuthenticated } = require("./middleware/checkAuth");
 const passport = require("./middleware/passport");
+const remindersController = require("./controller/reminder_controller");
 
 app.use(
   session({
@@ -66,6 +68,9 @@ app.post("/register", authController.registerSubmit);
 app.post("/login", authController.loginSubmit); 
 app.get("/logout", authController.logout);
 
+app.get("/social", ensureAuthenticated ,socialController.list);
+app.post("/social/add/:id", socialController.add);
+app.post("/social/unadd/:id", socialController.unadd);
 
 app.listen(3001, function () {
   console.log(
