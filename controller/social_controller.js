@@ -19,9 +19,7 @@ let socialController = {
     
     unadd: (req, res) => {
         let userToUnAdd = req.params.id;
-        let userIndex = req.user.friends.indexOf(id => {
-            return id == userToUnAdd;
-        });
+        let userIndex = req.user.friends.indexOf(Number(userToUnAdd));
         req.user.friends.splice(userIndex, 1);
         res.redirect("/social")
     }
