@@ -17,5 +17,23 @@
     </li>
   <% }) %>
 </ul>
-
+<% database.forEach(function (person) { %>
+  <% if (user.friends.includes(person.id) === true) {%>
+    <br>
+    <h2><%= person.name%></h2>
+    <% person.reminders.forEach(function (reminderItem) {%>
+    <li class="list-group-item">
+      <strong><%= reminderItem.title %>: </strong>
+      <%= reminderItem.description %>
+      || Completed:
+      <% if (reminderItem.completed == true) { %>
+        <span class="badge badge-success">True</span>
+      <% } else if (reminderItem.completed == false) { %>
+        <span class="badge badge-danger">False</span>
+      <% } %>
+      <strong>Tags: <%= reminderItem.tags %> </strong>
+    </li>
+    <%})%>
+  <%}%>
+<% }) %>
 </div>

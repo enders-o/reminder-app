@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 class="page-header">Social Reminders</h1>
+    <h2>Users</h2>
+    <ul class="list-group">
+        <% database.forEach(function (person) { %>
+            <% if (user.id !== person.id) { %>
+            <li class="list-group-item">
+                <label for="">
+                    
+                </label>
+                <strong><%= person.name %></strong>
+                <% if (user.friends.includes(person.id) !== true) { %>
+                <form class="addForm "method="POST" action="<%= '/social/add/' + person.id %>">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+                <%} else {%>
+                <form class="unAddForm "method="POST" action=<%= "/social/unadd/" + person.id %>>
+                    <button type="submit" class="btn btn-primary">Unadd</button>
+                </form>
+                <%}%>
+            </li>
+            <% } %>
+        <% }) %>
+    </ul>
+</div>
