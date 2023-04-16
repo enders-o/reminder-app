@@ -9,7 +9,7 @@ let socialController = {
         let userToAdd = req.params.id;
         // let friendsIndex = req.user.friends;
         if (req.user && req.user.friends) {
-            req.user.friends.push(req.params.id);
+            req.user.friends.push(Number(req.params.id));
             res.redirect("/social")
         } else {
             res.status(500).send("Error")
