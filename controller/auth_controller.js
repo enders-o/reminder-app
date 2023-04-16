@@ -23,7 +23,8 @@ let authController = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      reminders: []
+      reminders: [],
+      friends: []
     };
     database.push(user)
     res.redirect("/login");
