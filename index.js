@@ -49,7 +49,7 @@ app.use(passport.session());
 
 app.get("/reminders",ensureAuthenticated, reminderController.list);
 
-app.get("/reminder/new", reminderController.new);
+app.get("/reminder/new", ensureAuthenticated, reminderController.new);
   
 app.get("/reminder/:id", reminderController.listOne);
 
