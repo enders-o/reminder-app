@@ -13,7 +13,11 @@
         <span class="badge badge-danger">False</span>
       <% } %>
       <a class="pull-right" href=<%= "/reminder/" + reminderItem.id %>>View</a>
-      <strong>Tags: <%= reminderItem.tags %> </strong>
+      <br>
+      <strong>Tags:</strong>
+      <% for (let tag of reminderItem.tags) { %>
+      <span class="badge badge-primary"><%= tag %></span>
+      <% } %>
     </li>
   <% }) %>
 </ul>
@@ -31,7 +35,11 @@
       <% } else if (reminderItem.completed == false) { %>
         <span class="badge badge-danger">False</span>
       <% } %>
-      <strong>Tags: <%= reminderItem.tags %> </strong>
+      <br>
+      <strong>Tags:</strong>
+      <% for (let tag of reminderItem.tags) { %>
+        <span class="badge badge-primary"><%= tag %></span>
+        <% } %>
     </li>
     <%})%>
   <%}%>
